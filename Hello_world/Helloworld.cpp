@@ -8,8 +8,40 @@
 #include "header2.h"
 
 using namespace std;
-void sort(int* start, size_t n);
-void sort2(int p1[], size_t n);
+//void sort(int* start, size_t n);
+//void sort2(int p1[], size_t n);
+
+void sort3(int p1[], size_t n, bool p = true)
+{
+	cout << "sort2" << endl;
+
+	for (int i = 0; i < n - 1; i++)
+	{
+		int comp = i;
+
+		for (int j = i + 1; j < n; j++)
+		{
+			if (p)
+			{
+				if (p1[j] < p1[comp])
+					comp = j;
+			}
+			else {
+				if (p1[j] > p1[comp])
+					comp = j;
+			}
+		}
+
+		int buf = p1[comp];
+		p1[comp] = p1[i];
+		p1[i] = buf;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		cout << p1[i] << endl;
+	}
+
+}
 
 
 
@@ -53,7 +85,8 @@ int main()
 	*/
 	int arr1[] = { 5,6,3,-8,0,5 };
 	size_t n = sizeof(arr1) / sizeof(arr1[0]);
-	sort2(arr1, n);
+	sort3(arr1, n, false);
+	sort3(arr1, n);
 
 	/*
 	int arr[] = { 5,6,3,-8,0,5 };
@@ -70,6 +103,7 @@ int main()
 
     return 0;
 }
+/*
 void sort(int* start, size_t n)
 {
 	cout << "sort(int* start, size_t n)" << endl;
@@ -91,6 +125,7 @@ void sort(int* start, size_t n)
 		pCur++;
 	}
 }
+
 
 void sort2(int p1[], size_t n)
 {
@@ -116,5 +151,8 @@ void sort2(int p1[], size_t n)
 	}
 
 }
+*/
+
+
 
 

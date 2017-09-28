@@ -3,26 +3,12 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include "cmpint.h"
 
 
-bool cmp_int(void *a, void *b)
+bool cmp_double(const void *a, const void* b)
 {
-	return (*(static_cast<int*>(a))) < (*(static_cast<int*>(b)));
-}
-
-bool cmp_double(void *a,  void*b)
-{
-	return (*(static_cast<double*>(a))) < (*(static_cast<double*>(b)));
-}
-
-void cout_arr(void *p1, size_t n, size_t type)
-{
-	char* pCur = static_cast<char*>(p1);
-	for (int i = 0; i < n; i++)
-	{
-		std::cout << *(int*)pCur << " ";
-		pCur += type;
-	}
+	return (*(static_cast<const double*>(a))) < (*(static_cast<const double*>(b)));
 }
 
 void rearr(char*a, char*b, size_t type)
@@ -38,7 +24,7 @@ void rearr(char*a, char*b, size_t type)
 }
 
 
-void sort5(void* start, size_t n, size_t type, bool (*compare)( void*, void*))
+void sort5(void* start, size_t n, size_t type, bool (*compare)(const void*,const void*))
 {
 	char* pCur = static_cast<char*>(start);
 	
@@ -62,28 +48,31 @@ void sort5(void* start, size_t n, size_t type, bool (*compare)( void*, void*))
 int main()
 {
 	
-	int arr_int[] = { 5,-8,3,9081,-0,0,5 };
-	size_t n = sizeof(arr_int) / sizeof(arr_int[0]);
-	size_t b = sizeof(arr_int[0]);
+	int arrInt[] = { 5,-8,3,9081,-0,0,5 };
 
-	sort5(arr_int, n, b, cmp_int);
+	size_t sizeInt = sizeof(arrInt[0]);
+	size_t arrIntLenght = sizeof(arrInt) / sizeInt;
+	
+
+	sort5(arrInt, arrIntLenght, sizeInt, cmp_int);
 
 	std::cout << "After sort(int)" << std::endl;
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < arrIntLenght; i++)
 	{		
-		std::cout << arr_int[i]<<"\n";
+		std::cout << arrInt[i]<<"\n";
 	}
 
-	double arr_d[] = { 5,7,45,0,3,23, 2.2, -7.65 };
-	size_t nd = sizeof(arr_d) / sizeof(arr_d[0]);
-	size_t bd = sizeof(arr_d[0]);
+	double arrDouble[] = { 5,7,45,0,3,23, 2.2, -7.65 };
+	size_t sizeDouble = sizeof(arrDouble[0]);
+	size_t arrDoubleLenght = sizeof(arrDouble) / sizeDouble;
+	
 
-	sort5(arr_d, nd, bd, cmp_double);
+	sort5(arrDouble, arrDoubleLenght, sizeDouble, cmp_double);
 
 	std::cout << "After sort(double)" << std::endl;
-	for (int i = 0; i < nd; i++)
+	for (int i = 0; i < arrDoubleLenght; i++)
 	{
-		std::cout << arr_d[i] << "\n ";
+		std::cout << arrDouble[i] << "\n ";
 	}
 
 		

@@ -4,12 +4,8 @@
 #include "stdafx.h"
 #include <iostream>
 #include "cmpint.h"
+#include "cmpdbl.h"
 
-
-bool cmp_double(const void *a, const void* b)
-{
-	return (*(static_cast<const double*>(a))) < (*(static_cast<const double*>(b)));
-}
 
 void rearr(char*a, char*b, size_t type)
 {
@@ -74,7 +70,6 @@ int main()
 	{
 		std::cout << arrDouble[i] << "\n ";
 	}
-
 		
     return 0;
 }

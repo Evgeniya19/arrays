@@ -27,6 +27,9 @@
     <ClInclude Include="cmpint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cmpdbl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -35,7 +38,10 @@
     <ClCompile Include="Helloworld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="CmpInt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CmpDbl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
